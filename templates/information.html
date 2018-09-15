@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% block style%}
+       .hide{
+        display: none;
+
+    }
+    .edit-model{
+        position: fixed;
+        height: 300px;
+        width: 400px;
+        top: 100px;
+        left:50%;
+        z-index: 101;
+        border: 1px solid red;
+        background: bisque;
+        margin-left: -200px;}
+    .information{
+
+    }
+    .active{
+   background-color: red;
+    font-size:20px;
+
+    }
+{% endblock %}
+{% block content %}
+    <div class="edit-model hide">
+    <form id="edit_form"  method="post">
+{#    {% csrf_token %}#}
+
+    <input name="id" type="text" placeholder="ID"  value="{{ obj.id }}" style="display: none">
+         <div>
+         <label>姓名：</label>
+             <input type="text" placeholder="姓名" name="realname" id="realname"></div>
+        <div><label>用户名：</label>
+        <input type="text" placeholder="用户名" name="username" id="username" disabled="disabled">
+             </div>
+
+       <div>
+         <label>email：</label>
+         <input  type="email" placeholder="邮箱" name="email" id="e">
+       </div>
+         <div>
+         <label>电话：</label>
+        <input type="text" placeholder="电话" name="phone" id="phone">
+         </div>
+
+    <div>
+    <input type="button" style="color: cornflowerblue;" id="change" value="确认修改">
+        <input type="button" style="color: cornflowerblue;" id="cancel" value="返回">
+        <span id="error"></span>
+    </div>
+
+    </form>
+
+</div>
+
+        <h1>账号管理</h1>
+        <hr>
+        <div>
+
+           <a class="active" href="/information/basic_document/">基本资料</a>
+            <a href="/information/password/" style="font-size: 20px;">密码管理</a>
+
+            </div>
+      <div class="information_1">
+         <div>
+        <label>姓名：</label>
+     {{ obj.realname }}
+    </div>
+    <div>
+
+        <label>用户名：</label>
+       {{ obj.username }}
+    </div>
+     <div>
+        <label>邮箱：</label>
+       {{ obj.email }}
+    </div>
+      <div>
+        <label>电话：</label>
+      {{ obj.phone }}
+    </div>
+
+    <div><input style="background-color: #2F72AB;color:white;" type="button" value="修改" id="user"></div>
+      </div>
+
+{% endblock %}
+{% block script %}
+    <script type="text/javascript" src="/static/js/jquery-1.12.4.js"> </script>
+    <script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
+    <script>
+    $(function () {
+         $.ajaxSetup({
+             beforeSend:function (xhr,settings) {
+                 xhr.setRequestHeader('X-CSRFtoken',$.cookie('csrftoken'));
+
+             }
+         });
+
+
+    $('#user').click(function () {
+        $('.edit-model').removeClass('hide');
+        $('#realname').val('{{ obj.realname }}');
+        $('#username').val('{{ obj.username }}');
+        $('#e').val('{{ obj.email }}');
+        $('#phone').val('{{ obj.phone }}');
+
+    });
+    $('#cancel').click(function () {
+        $('.edit-model').addClass('hide');
+
+    });
+
+  $('#change').click(function () {
+      $.ajax({
+          url:'/information/basic/',
+          data:$('#edit_form').serialize(),
+          type:'POST',
+{#          datatype:'JSON',#}
+          traditional:true,
+{#          headers:{'X-CSRFtoken':$.cookie('csrftoken')},#}
+          success:function (data) {
+                var obj=JSON.parse(data);
+                if (obj.status){
+                  $('#error').text(obj.error);
+                  location.reload();
+
+
+
+
+              }
+              else{
+                              $('#error').text(obj.error);
+                          }
+
+          }
+
+
+      });
+
+
+
+  })
+
+
+    })
+    </script>
+
+{% endblock %}

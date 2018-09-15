@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="img/icon.jpg">
+    <!-- <link rel="stylesheet" href="css/login-style.css"> -->
+    <!-- <link rel="stylesheet" href=""> -->
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/c1108-css.css">
+    <title>function test</title>
+    <style>
+        .container {
+            width: 800px;
+            height: auto;
+            position: relative;
+            margin-top: 20px;
+            /* float: left; */
+        }
+        
+        .side-bar {
+            width: 400px;
+            height: auot;
+            /* position: absolute; */
+            position: fixed;
+            margin-top: 20px;
+            float: left;
+            padding: 10px 20px;
+            margin-left: 850px;
+            background: rgb(255, 235, 247);
+        }
+        
+        .main {
+            width: 100%;
+            height: auto;
+            border-spacing: 0;
+        }
+        
+        tr {
+            text-align: right;
+            vertical-align: top;
+            /* border: 1px solid gray; */
+        }
+        
+        td {
+            border-top: 1px solid gray;
+            border-left: 1px solid gray;
+            width: 100px;
+            height: 60px;
+            overflow: hidden;
+        }
+        
+        .date td {
+            height: 20px;
+            text-align: center;
+            /* vertical-align: center; */
+        }
+        
+        .week td {
+            height: 20px;
+            text-align: center;
+        }
+        /* tr:last-child { */
+        /* border-bottom: 1px solid gray; */
+        /* background: pink; */
+        /* } */
+        
+        .weekday7 {
+            border-right: 1px solid gray;
+        }
+        
+        .warn {
+            display: none;
+            color: red;
+        }
+        
+        .div {
+            position: absolute;
+            /* color: white; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <table class="main">
+            <thead></thead>
+            <tbody>
+                <tr class='date'>
+                    <td class='weekdays'>月</td>
+                    <td class="weekday1"></td>
+                    <td class='weekday2'></td>
+                    <td class='weekday3'></td>
+                    <td class='weekday4'></td>
+                    <td class='weekday5'></td>
+                    <td class='weekday6'></td>
+                    <td class='weekday7'></td>
+                </tr>
+                <tr class='week'>
+                    <td class='weekdays'>星期</td>
+                    <td class="weekday1">1</td>
+                    <td class='weekday2'>2</td>
+                    <td class='weekday3'>3</td>
+                    <td class='weekday4'>4</td>
+                    <td class='weekday5'>5</td>
+                    <td class='weekday6'>6</td>
+                    <td class='weekday7'>7</td>
+                </tr>
+                <tr>
+                    <td class='weekdays'>08:00</td>
+                    <td class="weekday1"></td>
+                    <td class='weekday2'></td>
+                    <td class='weekday3'></td>
+                    <td class='weekday4'></td>
+                    <td class='weekday5'></td>
+                    <td class='weekday6'></td>
+                    <td class='weekday7'></td>
+                </tr>
+                <tr>
+                    <td class='weekdays'>09:00</td>
+                    <td class="weekday1"></td>
+                    <td class='weekday2'></td>
+                    <td class='weekday3'></td>
+                    <td class='weekday4'></td>
+                    <td class='weekday5'></td>
+                    <td class='weekday6'></td>
+                    <td class='weekday7'></td>
+                </tr>
+                <tr>
+                    <td class='weekdays'>10:00</td>
+                    <td class="weekday1"></td>
+                    <td class='weekday2'></td>
+                    <td class='weekday3'></td>
+                    <td class='weekday4'></td>
+                    <td class='weekday5'></td>
+                    <td class='weekday6'></td>
+                    <td class='weekday7'></td>
+                </tr>
+                <tr>
+                    <td class='weekdays'>11:00</td>
+                    <td class="weekday1"></td>
+                    <td class='weekday2'></td>
+                    <td class='weekday3'></td>
+                    <td class='weekday4'></td>
+                    <td class='weekday5'></td>
+                    <td class='weekday6'></td>
+                    <td class='weekday7'></td>
+                </tr>
+                <tr>
+                    <td class='weekdays'>12:00</td>
+                    <td class="weekday1"></td>
+                    <td class='weekday2'></td>
+                    <td class='weekday3'></td>
+                    <td class='weekday4'></td>
+                    <td class='weekday5'></td>
+                    <td class='weekday6'></td>
+                    <td class='weekday7'></td>
+                </tr>
+                <tr>
+                    <td class='weekdays'>13:00</td>
+                    <td class="weekday1"></td>
+                    <td class='weekday2'></td>
+                    <td class='weekday3'></td>
+                    <td class='weekday4'></td>
+                    <td class='weekday5'></td>
+                    <td class='weekday6'></td>
+                    <td class='weekday7'></td>
+                </tr>
+                <tr>
+                    <td class='weekdays'>14:00</td>
+                    <td class="weekday1"></td>
+                    <td class='weekday2'></td>
+                    <td class='weekday3'></td>
+                    <td class='weekday4'></td>
+                    <td class='weekday5'></td>
+                    <td class='weekday6'></td>
+                    <td class='weekday7'></td>
+                </tr>
+                <tr>
+                    <td class='weekdays'>15:00</td>
+                    <td class="weekday1"></td>
+                    <td class='weekday2'></td>
+                    <td class='weekday3'></td>
+                    <td class='weekday4'></td>
+                    <td class='weekday5'></td>
+                    <td class='weekday6'></td>
+                    <td class='weekday7'></td>
+                </tr>
+                <tr>
+                    <td class='weekdays'>16:00</td>
+                    <td class="weekday1"></td>
+                    <td class='weekday2'></td>
+                    <td class='weekday3'></td>
+                    <td class='weekday4'></td>
+                    <td class='weekday5'></td>
+                    <td class='weekday6'></td>
+                    <td class='weekday7'></td>
+                </tr>
+                <tr>
+                    <td class='weekdays'>17:00</td>
+                    <td class="weekday1"></td>
+                    <td class='weekday2'></td>
+                    <td class='weekday3'></td>
+                    <td class='weekday4'></td>
+                    <td class='weekday5'></td>
+                    <td class='weekday6'></td>
+                    <td class='weekday7'></td>
+                </tr>
+                <tr>
+                    <td class='weekdays'>18:00</td>
+                    <td class="weekday1"></td>
+                    <td class='weekday2'></td>
+                    <td class='weekday3'></td>
+                    <td class='weekday4'></td>
+                    <td class='weekday5'></td>
+                    <td class='weekday6'></td>
+                    <td class='weekday7'></td>
+                </tr>
+                <tr>
+                    <td class='weekdays'>19:00</td>
+                    <td class="weekday1"></td>
+                    <td class='weekday2'></td>
+                    <td class='weekday3'></td>
+                    <td class='weekday4'></td>
+                    <td class='weekday5'></td>
+                    <td class='weekday6'></td>
+                    <td class='weekday7'></td>
+                </tr>
+                <tr>
+                    <td class='weekdays'>20:00</td>
+                    <td class="weekday1"></td>
+                    <td class='weekday2'></td>
+                    <td class='weekday3'></td>
+                    <td class='weekday4'></td>
+                    <td class='weekday5'></td>
+                    <td class='weekday6'></td>
+                    <td class='weekday7'></td>
+                </tr>
+                <tr>
+                    <td class='weekdays'>21:00</td>
+                    <td class="weekday1"></td>
+                    <td class='weekday2'></td>
+                    <td class='weekday3'></td>
+                    <td class='weekday4'></td>
+                    <td class='weekday5'></td>
+                    <td class='weekday6'></td>
+                    <td class='weekday7'></td>
+                </tr>
+                <tr>
+                    <td class='weekdays'>22:00</td>
+                    <td class="weekday1"></td>
+                    <td class='weekday2'></td>
+                    <td class='weekday3'></td>
+                    <td class='weekday4'></td>
+                    <td class='weekday5'></td>
+                    <td class='weekday6'></td>
+                    <td class='weekday7'></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="side-bar">
+        <form action="" method="get">
+            <h1>新增</h1>
+            <br> 预约人员：
+            <input type="text" id="resUsername"><span class='warn'>*必填</span>
+
+            <br> 预约说明：
+            <textarea name="textarea" id='resDescription'></textarea>
+            <br> 预约日期：
+            <!-- <input style="margin-top: 10px;" type="week"> -->
+            <select name="week" id="resWeek" class='week'>
+                        <option value="7">星期日</option>
+                        <option value="6">星期六</option>
+                        <option value='5'>星期五</option>
+                        <option value="4">星期四</option>
+                        <option value="3">星期三</option>
+                        <option value="2">星期二</option>
+                        <option value="1">星期一</option>
+            </select>
+            <input type="checkbox">整天
+            <br> 开始时间：
+            <input type="time" id='beginTime'><span class='warn'>*必填,格式为00:00</span>
+            <br> 结束时间：
+            <input type="time" id='endTime'><span class='warn'>*必填,格式为00:00</span>
+            <br> 预约权限：
+            <!-- <input type="text"> -->
+            <select name="" id="purview" class="week">
+                        <option value="小组预约" style="color:green;">小组预约</option>
+                        <option value="团队预约" style="color:blue">团队预约</option>
+                        <option value="老师预约" style="color:red">老师预约</option>
+                        <option value="其他预约" style="color: gray">其他预约</option>
+            </select>
+            <br>
+            <br> 选择你的预约颜色:
+            <input type="text" id='color'><span class='warn'>*必填,格式为'red'</span>
+            <br>
+            <input type="button" id="back-btn" class="btn btn-danger" value="返回">
+            <input type="button" id="sub-btn" class="btn btn-primary" value='提交'>
+            <input type="reset" id="res-btn" class="btn btn-warning" value="重置">
+            <input type="button" id="test-btn" class="btn btn-success" value="测试" onclick='test()'>
+        </form>
+    </div>
+</body>
+<script>
+    var _count = 1;
+    window.onload = function getTable() {
+        var _day = new Date();
+        var _mon = _day.getMonth() + 1; //月份使用是要加一
+        var _today = _day.getDate();
+        var week = _day.getDay(); //getDay就是get的今天的星期
+        // console.log(week);
+        //getDate就是今天的日期
+        // console.log(_today);test sucess
+        // var _week = document.getElementsByClassName('week')[0];
+        // var _weekTd = _week.getElementsByTagName('td');
+        var _date = document.getElementsByClassName('date')[0];
+        var _dateTd = _date.getElementsByTagName('td');
+        _dateTd[0].innerHTML = _mon + '月';
+        var _sday;
+
+        function weekAndDay(_sday) {
+            for (let i = 1; i < _dateTd.length; i++) {
+                _dateTd[i].innerHTML = _sday;
+                _sday++;
+            }
+        }
+        //初始化
+        function inni(week, _today) {
+            if (week == 1) {
+                _sday = _today;
+                weekAndDay(_sday);
+            }
+            if (week == 2) {
+                _sday = _today - 1;
+                weekAndDay(_sday);
+            }
+            if (week == 3) {
+                _sday = _today - 2;
+                weekAndDay(_sday);
+            }
+            if (week == 4) {
+                _sday = _today - 3;
+                weekAndDay(_sday);
+            }
+            if (week == 5) {
+                _sday = _today - 4;
+                weekAndDay(_sday);
+            }
+            if (week == 6) {
+                _sday = _today - 5;
+                console.log(_sday);
+                weekAndDay(_sday);
+            }
+            if (week == 7) {
+                _sday = _today - 6;
+                weekAndDay(_sday);
+            }
+        }
+        // 初始化星期的日期信息
+        inni(week, _today);
+    }
+
+    function check() {
+        var oInput = document.getElementsByTagName('input');
+        var _warn = document.getElementsByClassName('warn');
+        // 0 3 4
+        oInput[0].onmouseout = function() {
+            if (!oInput[0].value) {
+                _warn[0].style.display = 'inline';
+            } else {
+                _warn[0].style.display = 'none';
+            }
+        }
+        oInput[2].onmouseout = function() {
+            if (!oInput[2].value) {
+                _warn[1].style.display = 'inline';
+            } else {
+                _warn[1].style.display = 'none';
+            }
+        }
+        oInput[3].onmouseout = function() {
+            if (!oInput[3].value) {
+                _warn[2].style.display = 'inline';
+            } else {
+                _warn[2].style.display = 'none';
+            }
+        }
+
+    }
+    check();
+
+    // 分钟的运算
+    function min(hour, min) {
+        if (hour <= 0 && min < 0) {
+            alert('请检查结束时间')
+        }
+        if (min < 0) {
+            return '0' + (hour - 1) + 'h' + (60 + min) + 'm';
+        }
+        if (min < 60) {
+            return '0' + hour + 'h' + min + 'm';
+        }
+        if (min > 60) {
+            return '0' + (hour + (min / 60)) + 'h' + (min % 60) + 'm';
+        }
+    }
+    //huode yuye shihjian
+    function getTime(begin, end) {
+        var _hour;
+        var _min;
+        _hour = (end[0] + end[1]) - (begin[0] + begin[1]);
+        _min = (end[3] + end[4]) - (begin[3] + begin[4]);
+        // min()
+        var result;
+        result = min(_hour, _min);
+        return result;
+        // alert(result);
+    }
+    // function comparing(start,end){
+    // 	// for(let i=0;i<_array.length;i++){
+    // 		i=0;
+    // 		if(start>=_array[i].begin&&start<_array.end){
+    // 			i++;
+    // 			return 0;
+    // 		}else{
+    // 			i++;
+    // 			retirn 1;
+    // 		}
+    // 	// }
+    // }
+    // 生成预约块
+    function generate(start, end, day) {
+
+        // alert(start + end + day);test success
+        // if (_count == 1) {
+        for (let i = 0; i < _array.length; i++) {
+            if (start > _array[i].begin && start < _array[i].end) { //
+                _count = 0;
+                _array[_array.length - 1].count = 0;
+                alert('error' + '请检查您的预约时间');
+                // continue;
+                break;
+                // _array.pop(_array.length - 1);
+                // console.log(_array);
+            } //error panduanchucuo
+            // }
+        }
+        console.log(_count);
+        if (_count == 1) {
+
+            var div = document.createElement('div');
+            ////        var _op;
+            _op = 'weekday' + day;
+            var weekday = document.getElementsByClassName(_op);
+            // console.log(weekday);
+            // alert(_op);test success 
+            var newTime = getTime(start, end);
+            // console.log(newTime);
+            var _start = start[0] + start[1];
+            var _end = end[0] + end[1];
+            // console.log(_start - 6);
+            var newHour = newTime[0] + newTime[1];
+            var newMin = newTime[3] + newTime[4];
+            var _name = document.getElementById('resUsername').value;
+            var _purview = document.getElementById('purview').value;
+            var _color = document.getElementById('color').value;
+            weekday[_start - 6].appendChild(div);
+            div.style.width = 95 + 'px';
+            div.style.height = (((end[0] + end[1]) - (start[0] + start[1])) * 60 + ((end[3] + end[4]) - (start[3] + start[4]))) + 'px';
+            div.style.marginTop = (start[3] + start[4]) + 'px';
+            div.style.background = _color;
+            div.style.color = 'white';
+            div.style.textAlign = 'center';
+            div.className = 'div';
+            div.innerHTML = _name + '<br>' + start + '~' + end + '<br>' + newTime + '<br>' + _purview;
+            // alert('success');test success
+            // div.style.position = 'fixed';、
+            // if (((end[0] + end[1]) - (start[0] + start[1])) < 1) {
+            //     weekday[_start - 6].appendChild(div);
+            //     // console.log(weekday[_start - 6]);
+            //     div.style.marginTop = (start[3] + start[4]) + 'px';
+            //     div.style.width = 100 + 'px';
+            //     div.style.height = newMin + 'px';
+            //     div.style.position = 'absolute';
+            //     div.style.backgroundColor = 'pink';
+
+            // var _des = document.getElementById('resDescription').value;
+            // var _resDay = document.getElementById('resWeek').value;
+            // var _begin = document.getElementById('beginTime').value;
+            // var _end = document.getElementById('endTime').value;
+            // var _time = getTime(_begin, _end);
+            div.title = _name + '&' + start + '~' + end + '&' + newTime + '&' + _purview;
+            _count = 1;
+            console.log(_count);
+        }
+        //     // alert('success');test success
+        // } else {
+        //     if (_start < 9) {
+        //         var newStart = '0' + (start[0] + start[1] - (-1)) + ':' + '00';
+        //         alert(newStart);
+        //     }
+        //     if (_start >= 10) {
+        //         var newStart = start[0] + start[1] - (-1) + ':' + '00';
+        //         alert(newStart);
+        //     }
+        //     console.log(newStart);
+        //     generate(newStart, end, day);
+        // }
+
+    }
+    //chuanjian yigeshuzu cunchuobj
+    var _array = new Array();
+
+    function putInto(obj) {
+        _array.push(obj);
+        return _array;
+    }
+    // function sayHello() {
+    //     alert('hello');
+    // }test success
+    function test() {
+        var obj = new Object();
+        var _name = document.getElementById('resUsername').value;
+        var _des = document.getElementById('resDescription').value;
+        var _resDay = document.getElementById('resWeek').value;
+        var _begin = document.getElementById('beginTime').value;
+        var _end = document.getElementById('endTime').value;
+        var _purview = document.getElementById('purview').value;
+        var _time = getTime(_begin, _end);
+        obj = {
+            name: _name,
+            description: _des,
+            weekday: _resDay,
+            begin: _begin,
+            end: _end,
+            time: _time,
+            purview: _purview,
+            count: 0
+        }
+        putInto(obj);
+
+        // alert(obj.time);
+        // console.log(obj);
+        // alert(obj);
+        // test success
+        generate(obj.begin, obj.end, obj.weekday);
+        // if (_count == 1) {
+        // for (let i = 0; i < _array.length; i++) {
+        //     if (_count == 1) {
+        //         _array[i].count = 1;
+        //     } else {
+        //         _array[i].count = 0;
+        //     }
+        // }
+        // }
+        // console.log(generate(obj.begin, obj.end, obj.weekday));
+    }
+</script>
+
+</html>

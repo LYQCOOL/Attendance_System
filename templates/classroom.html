@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block style %}
+    .th_size{
+    font-size:20px;
+    }
+
+{% endblock %}
+{% block content %}
+    <h1 style="margin: auto;">会议室信息：</h1>
+   <table border="1" class="th_size">
+   <thead>
+   <tr>
+   <th class="th_size">
+   会议室名
+   </th>
+       <th>预定情况</th>
+       <th>座位数（人）</th>
+      <th>会议室介绍</th>
+       <th>是否可用</th>
+       <th>备注</th>
+   </tr>
+   </thead>
+   <tbody>
+   {% for row in obj %}
+       <tr>
+    <th>{{row.location}}</th>
+       <th >
+           <a href="/viewroom/{{ row.id }}/">查看预约情况</a>
+       </th>
+       <th>{{ row.space }}</th>
+       <th>{{ row.introduction }}</th>
+       <th>{{ row.status.statu }}</th>
+       <th>{{ row.remark }}</th>
+       </tr>
+    {% endfor %}
+   </tbody>
+   </table>
+{% endblock %}
